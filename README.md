@@ -4,7 +4,17 @@
 
 ![](https://img.shields.io/github/v/release/myozaw00/apkdownloader?label=VERSION)
 
-![](https://github.com/myozaw00/apkdownloader/blob/master/images/recording.gif)
+## Usage
+```java
+ApkInstaller().install(Context, "URL", "APP_NAME")
+```
+
+##Permissions
+```xml
+	<uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+```
 
 For Android M and later OS, you will need to use filer provider. Example below.
 
@@ -44,3 +54,4 @@ dependencies {
     implementation 'com.github.myozaw00:apkdownloader:VERSION'
 }```
 
+![](https://github.com/myozaw00/apkdownloader/blob/master/images/recording.gif)
