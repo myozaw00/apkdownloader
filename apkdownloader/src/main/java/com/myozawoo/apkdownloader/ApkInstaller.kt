@@ -15,8 +15,9 @@ import okhttp3.Request
 import okhttp3.internal.closeQuietly
 import okhttp3.logging.HttpLoggingInterceptor
 import java.io.File
-import java.lang.Exception
 import okio.*
+import javax.net.ssl.SSLException
+import kotlin.Exception
 
 
 class ApkInstaller  {
@@ -68,33 +69,39 @@ class ApkInstaller  {
                         .url(url)
                         .build()
                     GlobalScope.launch (Dispatchers.Main){ mDialog.show() }
-                    val response = okHttpClient.build().newCall(request).execute()
-                    val contentLength = response.body?.contentLength()
-                    print("ContentLength: $contentLength")
-                    val source = response.body?.source()
-                    val file = File(context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), "$appName.apk")
-                    val sink = file.sink().buffer()
-                    val sinkBuffer = sink.buffer
-                    var totalBytesRead: Long = 0
-                    var bytesRead: Long?
-                    val bufferSize: Long = 8*1024
-                    do {
-                        bytesRead = source?.read(sinkBuffer, bufferSize)
-                        if (bytesRead?.toInt() == -1) {
-                            print("Source is null")
-                            break
-                        }
-                        sink.emit()
-                        totalBytesRead += bytesRead!!
-                        val progress = (totalBytesRead * 100) / contentLength!!
+                    try {
+                        val response = okHttpClient.build().newCall(request).execute()
+                        val contentLength = response.body?.contentLength()
+                        print("ContentLength: $contentLength")
+                        val source = response.body?.source()
+                        val file = File(context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), "$appName.apk")
+                        val sink = file.sink().buffer()
+                        val sinkBuffer = sink.buffer
+                        var totalBytesRead: Long = 0
+                        var bytesRead: Long?
+                        val bufferSize: Long = 8*1024
+                        do {
+                            bytesRead = source?.read(sinkBuffer, bufferSize)
+                            if (bytesRead?.toInt() == -1) {
+                                print("Source is null")
+                                break
+                            }
+                            sink.emit()
 
-                    }while (bytesRead?.toInt() != -1)
+                        }while (bytesRead?.toInt() != -1)
 
-                    sink.flush()
-                    sink.closeQuietly()
-                    source?.closeQuietly()
-                    mDialog.dismiss()
-                    downloaded = file
+                        sink.flush()
+                        sink.closeQuietly()
+                        source?.closeQuietly()
+                        mDialog.dismiss()
+                        downloaded = file
+                    }catch (e: SSLException) {
+                        mDialog.dismiss()
+                        downloaded = null
+                        e.printStackTrace()
+                    }
+
+
 
                 }.await()
 

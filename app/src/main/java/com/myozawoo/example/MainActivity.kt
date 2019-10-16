@@ -28,9 +28,8 @@ class MainActivity : AppCompatActivity() {
             EasyPermissions.hasPermissions(this, READ_WRITE_EXTERNAL_STORAGE[1])) {
 
             ApkInstaller().install(this,
-                //url = "https://digitalonboard.s3-ap-southeast-1.amazonaws.com/android/Myanmar+News_v2.2_apkpure.com.apk",
                 url = "https://digitalonboard.s3-ap-southeast-1.amazonaws.com/android/Myanmar+News_v2.2_apkpure.com.apk",
-                appName = "MyanmarNews")
+                appName = "Myanmar News")
 
 
 
