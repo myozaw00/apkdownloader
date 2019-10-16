@@ -38,7 +38,9 @@ class ApkInstaller  {
                     val httpLogginInterceptor = HttpLoggingInterceptor()
                     httpLogginInterceptor.level = HttpLoggingInterceptor.Level.HEADERS
                     httpLogginInterceptor.level = HttpLoggingInterceptor.Level.BODY
-                    okHttpClient.addNetworkInterceptor(httpLogginInterceptor)
+                    if (BuildConfig.DEBUG) {
+                        okHttpClient.addNetworkInterceptor(httpLogginInterceptor)
+                    }
                     okHttpClient.addNetworkInterceptor{ chain ->
                         val originalResponse = chain.proceed(chain.request())
                         originalResponse.newBuilder()
