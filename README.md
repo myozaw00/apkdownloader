@@ -52,7 +52,8 @@ allprojects {
 
 dependencies {
     implementation 'com.github.myozaw00:apkdownloader:VERSION'
-}```
+}
+```
 
 ![](https://raw.githubusercontent.com/myozaw00/apkdownloader/master/images/recording.gif)
 
