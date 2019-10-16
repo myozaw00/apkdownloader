@@ -9,7 +9,7 @@
 ApkInstaller().install(Context, "URL", "APP_NAME")
 ```
 
-##Permissions
+## Permissions
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
