@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="This is title!"
+        android:textStyle="bold"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Please do not close the app."
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/tvDownloadStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="15%."
+        android:layout_gravity="end"
+        android:layout_marginTop="8dp"/>
+
+
+<!--    <View-->
+<!--        android:id="@+id/tvProgress"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="2dp"-->
+<!--        android:background="#0E47A1"-->
+<!--        android:layout_marginTop="8dp"/>-->
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progress="1"
+        android:progressTint="#0E47A1"
+        android:layout_marginTop="8dp"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal" />
+
+
+</LinearLayout>
