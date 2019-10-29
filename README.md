@@ -2,7 +2,7 @@
 
 - Download APK from public link and launch Action.VIEW intent once it's downloaded
 
-![](https://img.shields.io/github/v/release/myozaw00/apkdownloader?label=VERSION)
+[![](https://jitpack.io/v/myozaw00/apkdownloader.svg)](https://jitpack.io/#myozaw00/apkdownloader)
 
 ## Usage
 ```java
