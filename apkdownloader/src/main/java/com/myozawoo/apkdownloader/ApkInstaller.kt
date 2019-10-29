@@ -3,9 +3,11 @@ package com.myozawoo.apkdownloader
 import android.content.Context
 import android.os.Environment
 import android.util.Log
+import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import com.myozawoo.apkdownloader.utils.ApkUtils
 import com.myozawoo.apkdownloader.utils.ProgressResponseBody
+import kotlinx.android.synthetic.main.dialog_download_progress.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
@@ -22,13 +24,15 @@ import kotlin.Exception
 
 class ApkInstaller  {
 
-    fun install(context: Context, url: String, appName: String) {
+    fun install(context: Context, url: String, appName: String, description: String) {
 
+        val view = LayoutInflater.from(context).inflate(R.layout.dialog_download_progress, null)
         val mDialog = AlertDialog.Builder(context)
-            .setTitle(appName)
-            .setMessage("Downloading file (0%)")
+            .setView(view)
             .setCancelable(false)
             .create()
+        view.tvTitle.text = appName
+        view.tvMessage.text = description
 
 
         try {
@@ -57,7 +61,8 @@ class ApkInstaller  {
                                             GlobalScope.launch(Dispatchers.Main) {
                                                 val progress =
                                                     ((100 * bytesRead) / contentLength).toInt()
-                                                mDialog.setMessage("Downloading file ($progress%)")
+                                                view.progressBar.progress = progress
+                                                view.tvDownloadStatus.setText("$progress%")
                                             }
 
                                         }

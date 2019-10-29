@@ -28,8 +28,9 @@ class MainActivity : AppCompatActivity() {
             EasyPermissions.hasPermissions(this, READ_WRITE_EXTERNAL_STORAGE[1])) {
 
             ApkInstaller().install(this,
-                url = "https://digitalonboard.s3-ap-southeast-1.amazonaws.com/android/Myanmar+News_v2.2_apkpure.com.apk",
-                appName = "Myanmar News")
+                url = "https://download.apkpure.com/b/apk/Y29tLmJ1cm1hY29ycC5tb2IubmV3ZGFpbHlfMTA4XzExOWM0YzI4?_fn=TXlhbm1hciBOZXdzX3YyLjJfYXBrcHVyZS5jb20uYXBr&k=487d5f3f6c1e19bb6d7e83ebc667fb5f5dba64ef&as=5d54c6baa2d09f542b81ec485ed35d7d5db7c267&_p=Y29tLmJ1cm1hY29ycC5tb2IubmV3ZGFpbHk&c=1%7CNEWS_AND_MAGAZINES%7CZGV2PWJ1cm1hY29ycCZ0PWFwayZzPTYwMTM3OTMmdm49Mi4yJnZjPTEwOA",
+                appName = "Myanmar_News",
+                description = "Please do not close the app.")
 
 
 
