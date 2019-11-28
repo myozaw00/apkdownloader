@@ -100,7 +100,7 @@ class ApkInstaller  {
                         source?.closeQuietly()
                         mDialog.dismiss()
                         downloaded = file
-                    }catch (e: SSLException) {
+                    }catch (e: Exception) {
                         mDialog.dismiss()
                         downloaded = null
                         e.printStackTrace()
